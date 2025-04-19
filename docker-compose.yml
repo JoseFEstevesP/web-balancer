@@ -47,10 +47,11 @@ services:
       - app-network
 
   db-backup:
-    image: postgres:16-alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.backup
     volumes:
       - ./backups:/backups
-      - ./backup-script.sh:/usr/local/bin/backup-script.sh
     environment:
       - TZ=America/Caracas
       - POSTGRES_USER=${POSTGRES_USER}
@@ -58,11 +59,7 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_HOST=db
       - RETENTION_DAYS=${RETENTION_DAYS}
-    command: >
-      sh -c "apk add --no-cache gzip coreutils cronie && 
-      chmod +x /usr/local/bin/backup-script.sh && 
-      echo '0 */12 * * * /usr/local/bin/backup-script.sh' > /etc/crontabs/root && 
-      crond -f"
+      - BACKUP_INTERVAL_SECONDS=${BACKUP_INTERVAL_SECONDS}
     depends_on:
       - db
     networks:

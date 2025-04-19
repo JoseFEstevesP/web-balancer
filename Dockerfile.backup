@@ -1,0 +1,14 @@
+FROM postgres:16-alpine
+
+RUN apk add --no-cache gzip coreutils dos2unix
+
+# Copiar el script y convertirlo
+COPY backup-script.sh /tmp/backup-script.sh
+RUN dos2unix /tmp/backup-script.sh && \
+    mv /tmp/backup-script.sh /usr/local/bin/backup-script.sh && \
+    chmod +x /usr/local/bin/backup-script.sh
+
+RUN mkdir -p /backups
+
+# Usar variable de entorno para el intervalo, con valor por defecto de 43200 segundos (12 horas)
+CMD ["sh", "-c", "while true; do /usr/local/bin/backup-script.sh; sleep ${BACKUP_INTERVAL_SECONDS:-43200}; done"]
