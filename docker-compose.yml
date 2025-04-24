@@ -1,4 +1,3 @@
-# centralizar el guardado de los logs
 services:
   nginx:
     image: nginx:1.23-alpine
@@ -81,7 +80,7 @@ services:
 volumes:
   postgres-data:
   shared-images:
-  redis:
+  redis-data:
 
 networks:
   app-network:
