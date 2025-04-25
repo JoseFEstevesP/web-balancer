@@ -5,3 +5,4 @@ backups
 nginx/ssl/nginx-selfsigned.key
 nginx/ssl/nginx-selfsigned.crt
 nginx/nginx.conf
+!.gitignore
