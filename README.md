@@ -4,6 +4,15 @@
 
 Este es un sistema completo que integra varios servicios Docker, incluyendo un frontend, backend, bases de datos PostgreSQL y un servidor Nginx como proxy inverso con soporte SSL.
 
+## Documentación
+
+La documentación completa del sistema está disponible en el directorio `docs/`:
+
+- [Índice de Documentación](docs/index.md) - Punto de entrada a toda la documentación
+- [Documentación Técnica](docs/technical-docs.md) - Para desarrolladores y administradores
+- [Manual de Usuario](docs/user-manual.md) - Para usuarios finales
+- [Arquitectura del Sistema](docs/architecture.md) - Diagramas y descripción de componentes
+
 ## Estructura del Proyecto
 
 ```
@@ -14,6 +23,7 @@ Este es un sistema completo que integra varios servicios Docker, incluyendo un f
 │   ├── ssl/
 │   └── conf/
 ├── postgres/
+├── docs/                # Documentación completa del sistema
 ├── backup-script.sh
 ├── docker-compose.yml
 └── README.md
@@ -58,8 +68,8 @@ Sistema automatizado de copias de seguridad mediante el script `backup-script.sh
 1. Clonar el repositorio:
 
 ```bash
-git clone [URL_DEL_REPOSITORIO]
-cd [web-balancer]
+git clone https://github.com/JoseFEstevesP/web-balancer.git
+cd web-balancer
 ```
 
 2. Configurar variables de entorno:
@@ -141,4 +151,4 @@ Para reportar problemas o solicitar ayuda:
 
 ## Licencia
 
-[Especificar la licencia del proyecto]
+MIT
