@@ -12,7 +12,8 @@ services:
       - frontend
       - backend
     networks:
-      - app-network
+      app-network:
+        ipv4_address: 172.20.0.10
 
   db:
     image: postgres:16-alpine
@@ -27,6 +28,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - app-network
+
   redis:
     container_name: redis
     image: redis:latest
@@ -85,3 +87,6 @@ volumes:
 networks:
   app-network:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
