@@ -107,6 +107,20 @@ docker-compose up -d
 - Nginx: 80 (HTTP) y 443 (HTTPS)
 - PostgreSQL: 5432
 
+### Red de Docker
+
+El sistema utiliza una red Docker personalizada con IPs estáticas para una comunicación de servicios más confiable:
+
+- **Red:** `app-network` (subred 172.20.0.0/24)
+- **Nginx:** 172.20.0.10
+- **Base de datos:** 172.20.0.11
+- **Redis:** 172.20.0.12
+- **Frontend:** 172.20.0.13
+- **Backend:** 172.20.0.14
+- **Backup:** 172.20.0.15
+
+Esta configuración permite la conexión de múltiples sistemas externos al balanceador de carga.
+
 ## Mantenimiento
 
 ### Copias de Seguridad

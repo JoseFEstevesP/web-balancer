@@ -6,3 +6,5 @@ nginx/ssl/nginx-selfsigned.key
 nginx/ssl/nginx-selfsigned.crt
 nginx/nginx.conf
 
+nginx-selfsigned.key
+nginx-selfsigned.crt
